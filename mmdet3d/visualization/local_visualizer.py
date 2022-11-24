@@ -786,7 +786,7 @@ class Det3DLocalVisualizer(DetLocalVisualizer):
 
         if show:
             self.show(
-                vis_task,
+                # vis_task,
                 save_path,
                 drawn_img_3d,
                 drawn_img,

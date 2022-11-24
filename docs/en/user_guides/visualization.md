@@ -142,6 +142,10 @@ To see the prediction results of trained models, you can run the following comma
 python tools/test.py ${CONFIG_FILE} ${CKPT_PATH} --show --show-dir ${SHOW_DIR}
 ```
 
+```bash
+python tools/test.py ${CONFIG_FILE} ${CKPT_PATH} --show --show-dir ${SHOW_DIR}
+```
+
 After running this command, plotted results including input data and the output of networks visualized on the input will be saved in `${SHOW_DIR}`.
 
 After running this command, you will obtain the input data, the output of networks and ground-truth labels visualized on the input (e.g. `***_gt.png` and `***_pred.png` in multi-modality detection task and vision-based detection task) in `${SHOW_DIR}`. When `show` is enabled, [Open3D](http://www.open3d.org/) will be used to visualize the results online. If you are running test in remote server without GUI, the online visualization is not supported, you can download the `results.pkl` from the remote server, and visualize the prediction results offline in your local machine.

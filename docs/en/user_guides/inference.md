@@ -21,7 +21,12 @@ The visualization results including a point cloud and predicted 3D bounding boxe
 Example on KITTI data using [SECOND](https://github.com/open-mmlab/mmdetection3d/tree/master/configs/second) model:
 
 ```shell
-python demo/pcd_demo.py demo/data/kitti/000008.bin configs/second/second_hv-secfpn_8xb6-80e_kitti-3d-car.py checkpoints/second_hv-secfpn_8xb6-80e_kitti-3d-car_20200620_230238-393f000c.pth
+python demo/pcd_demo.py \
+demo/data/kitti/000008.bin \
+configs/second/second_hv_secfpn_8xb6-80e_kitti-3d-car.py \
+checkpoints/hv_pointpillars_secfpn_6x8_160e_kitti-3d-car_20220331_134606-d42d15ed.pth \
+--save-name my_test/pcd_demo.png \
+--show 
 ```
 
 Example on SUN RGB-D data using [VoteNet](https://github.com/open-mmlab/mmdetection3d/tree/master/configs/votenet) model:
@@ -45,13 +50,28 @@ where the `ANNOTATION_FILE` should provide the 3D to 2D projection matrix. The v
 Example on KITTI data using [MVX-Net](https://github.com/open-mmlab/mmdetection3d/tree/master/configs/mvxnet) model:
 
 ```shell
-python demo/multi_modality_demo.py demo/data/kitti/000008.bin demo/data/kitti/000008.png demo/data/kitti/000008.pkl configs/mvxnet/mvx_fpn-dv-second-secfpn_8xb2-80e_kitti-3d-3class.py checkpoints/mvx_fpn-dv-second-secfpn_8xb2-80e_kitti-3d-3class_20200621_003904-10140f2d.pth
+python demo/multi_modality_demo.py demo/data/kitti/000008.bin \
+demo/data/kitti/000008.png \
+demo/data/kitti/000008.pkl \
+configs/mvxnet/mvxnet_fpn_dv_second_secfpn_8xb2-80e_kitti-3d-3class.py \
+checkpoints/dv_mvx-fpn_second_secfpn_adamw_2x8_80e_kitti-3d-3class_20210831_060805-83442923.pth \
+--save-name my_test/demo_multi_modality.png \
+--out-dir my_test \
+--show
 ```
 
 Example on SUN RGB-D data using [ImVoteNet](https://github.com/open-mmlab/mmdetection3d/tree/master/configs/imvotenet) model:
 
 ```shell
-python demo/multi_modality_demo.py demo/data/sunrgbd/sunrgbd_000017.bin demo/data/sunrgbd/sunrgbd_000017.jpg demo/data/sunrgbd/sunrgbd_000017_infos.pkl configs/imvotenet/imvotenet_stage2_8xb16_sunrgbd.py checkpoints/imvotenet_stage2_8xb16_sunrgbd_20210323_184021-d44dcb66.pth
+python demo/multi_modality_demo.py \
+demo/data/sunrgbd/000017.bin \
+demo/data/sunrgbd/000017.jpg \
+demo/data/sunrgbd/000017_infos.pkl \
+configs/imvotenet/imvotenet_faster-rcnn-r50_fpn_4xb2_sunrgbd-3d.py \
+checkpoints/imvotenet_faster_rcnn_r50_fpn_2x4_sunrgbd-3d-10class_20210819_225618-62eba6ce.pth \
+--save-name my_test/demo_multi_modality.png \
+--out-dir my_test \
+--show
 ```
 
 ### Monocular 3D Detection
@@ -67,7 +87,13 @@ where the `ANNOTATION_FILE` should provide the 3D to 2D projection matrix (camer
 Example on nuScenes data using [FCOS3D](https://github.com/open-mmlab/mmdetection3d/tree/master/configs/fcos3d) model:
 
 ```shell
-python demo/mono_det_demo.py demo/data/nuscenes/n015-2018-07-24-11-22-45+0800__CAM_BACK__1532402927637525.jpg demo/data/nuscenes/n015-2018-07-24-11-22-45+0800__CAM_BACK__1532402927637525.pkl configs/fcos3d/fcos3d_r101-caffe-dcn-fpn-head-gn_8xb2-1x_nus-mono3d_finetune.py checkpoints/fcos3d_r101-caffe-dcn-fpn-head-gn_8xb2-1x_nus-mono3d_finetune_20210717_095645-8d806dc2.pth
+python demo/mono_det_demo.py \
+demo/data/nuscenes/n015-2018-07-24-11-22-45+0800__CAM_BACK__1532402927637525.jpg \
+demo/data/nuscenes/n015-2018-07-24-11-22-45+0800__CAM_BACK__1532402927637525_mono3d.pkl \
+configs/fcos3d/fcos3d_r101-caffe-dcn_fpn_head-gn_8xb2-1x_nus-mono3d_finetune.py \
+checkpoints/fcos3d_r101_caffe_fpn_gn-head_dcn_2x8_1x_nus-mono3d_20210715_235813-4bed5239.pth \
+--out-dir my_test/demo_mono_det.png \
+--show
 ```
 
 Note that when visualizing results of monocular 3D detection for flipped images, the camera intrinsic matrix should also be modified accordingly. See more details and examples in PR [#744](https://github.com/open-mmlab/mmdetection3d/pull/744).
@@ -85,5 +111,9 @@ The visualization results including a point cloud and its predicted 3D segmentat
 Example on ScanNet data using [PointNet++ (SSG)](https://github.com/open-mmlab/mmdetection3d/tree/master/configs/pointnet2) model:
 
 ```shell
-python demo/pc_seg_demo.py demo/data/scannet/scene0000_00.bin configs/pointnet2/pointnet2_ssg_2xb16-cosine-200e_scannet-seg.py checkpoints/pointnet2_ssg_2xb16-cosine-200e_scannet-seg_20210514_143644-ee73704a.pth
+python demo/pcd_seg_demo.py \
+demo/data/scannet/scene0000_00.bin \
+configs/pointnet2/pointnet2_msg_2xb16-cosine-250e_scannet-seg.py \
+checkpoints/pointnet2_msg_16x2_cosine_250e_scannet_seg-3d-20class_20210514_144009-24477ab1.pth \
+--out-dir demo_seg.png
 ```

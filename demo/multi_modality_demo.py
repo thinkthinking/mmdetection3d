@@ -27,6 +27,11 @@ def parse_args():
     parser.add_argument(
         '--out-dir', type=str, default='demo', help='dir to save results')
     parser.add_argument(
+        '--save-name',
+        type=str,
+        default='demo.png',
+        help='dir to save results')
+    parser.add_argument(
         '--show',
         action='store_true',
         help='show online visualization results')
@@ -66,6 +71,7 @@ def main(args):
         show=True,
         wait_time=0,
         out_file=args.out_dir,
+        save_path=args.save_name,
         pred_score_thr=args.score_thr,
         vis_task='multi-modality_det')
 

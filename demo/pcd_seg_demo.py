@@ -50,7 +50,7 @@ def main(args):
         draw_gt=False,
         show=True,
         wait_time=0,
-        out_file=args.out_dir,
+        save_path=args.out_dir,
         vis_task='lidar_seg')
 
 
